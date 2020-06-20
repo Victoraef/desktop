@@ -1,0 +1,114 @@
+<!DOCTYPE html> 
+<html lang="pt-br"> 
+  
+<head> 
+    <meta charset="UTF-8"> 
+    <meta name="viewport" content
+        ="width=device-width, initial-scale=1.0"> 
+        <link rel="stylesheet" href="estilo.css">
+
+               <title>Jogo do Dado</title> 
+       
+    </head> 
+  
+<body> 
+<header>
+        <h2>Jogo do Dado</h2>
+    </header>
+
+<section>
+        
+<div class="container"> 
+
+        <h1></h1> 
+            <div class="dice"> 
+                <p class="Jogador1">Jogador 1 </p> 
+                <img class="img1" src="dice6.png"> 
+        
+                <p class="Jogador2">Jogador 2</p> 
+                <img class="img2" src="dice6.png"> 
+    </div> 
+    </div>    
+ 
+
+
+ <div class="container bottom"> 
+            <button type="button" class="butn"
+                onClick="rollTheDice()"> 
+                Jogar
+            </button>
+    </div>
+
+ <div class="container bottom"> 
+            <button type="button" class="butn"
+                onClick="editNames()"> 
+                Cadastro
+    </button>   
+     </div>
+<div class="container bottom"> 
+         <input type="button" class="butn" value="Reiniciar" onClick="history.go(0)">
+
+    </div>
+    </section>
+
+ <script> 
+     
+     localStorange.setItem("Nick","name");
+     </script>
+    <script>
+        // Nome do Jogador
+        var jogador1 = "Jogador1"; 
+        var jogador2 = "Jogador2"; 
+  
+        // Função para troca de jogadores
+        function editNames() { 
+            
+            jogador1 = prompt("Nome do Jogador1");
+            jogador1 = prompt("Nick Jogador1"); 
+            
+
+            jogador2 = prompt("Nome do Jogador2");
+            jogador2 = prompt("Nick do Jogador2"); 
+  
+            document.querySelector("p.Jogador1") 
+                            .innerHTML = jogador1; 
+            document.querySelector("p.Jogador1") 
+                            .innerHTML = jogador1; 
+                              
+            document.querySelector("p.Jogador2") 
+                            .innerHTML = jogador2; 
+            document.querySelector("p.Jogador2") 
+                            .innerHTML = jogador2; 
+        } 
+  
+        // Função para jogar os Dados
+        function rollTheDice() { 
+            setTimeout(function () { 
+                var randomNumber1 = Math.floor(Math.random() * 6) + 1; 
+                var randomNumber2 = Math.floor(Math.random() * 6) + 1; 
+  
+                document.querySelector(".img1").setAttribute("src", 
+                    "dice" + randomNumber1 + ".png"); 
+  
+                document.querySelector(".img2").setAttribute("src", 
+                    "dice" + randomNumber2 + ".png"); 
+  
+                if (randomNumber1 === randomNumber2) { 
+                    document.querySelector("h1").innerHTML = "EMPATE!!!"; 
+                } 
+  
+                else if (randomNumber1 < randomNumber2) { 
+                    document.querySelector("h1").innerHTML 
+                        = (jogador2 + " Ganhou"); 
+                } 
+  
+                else { 
+                    document.querySelector("h1").innerHTML 
+                        = (jogador1 + " Ganhou"); 
+                } 
+            }, 100); 
+        } 
+    </script> 
+</body> 
+  
+</html> 
